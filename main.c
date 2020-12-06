@@ -7,8 +7,8 @@ void menu()
 }
 int main()
 {
-    menu();
-    int boolean=1;
+    menu();//print the menu
+    int boolean=1;//if the usuer type 'E' than the boolean=0
     while(boolean==1)
     { char c;
       double amount;
@@ -20,7 +20,7 @@ int main()
            {
          case 'O':
             printf("Please enter amount for deposit:");
-            if(scanf("%lf", &amount)!=1)
+            if(scanf("%lf", &amount)!=1)//if scanf failed to read the number
             {
                 printf("Failed to read the amount\n");
             }
@@ -37,7 +37,7 @@ int main()
 
          case 'B':
             printf("Please enter account number:");
-            if(scanf("%d",&account_number)!=1)
+            if(scanf("%d",&account_number)!=1)//if scanf failed to read the number
             {
                 printf("Failed to read the account number\n");
             }
@@ -61,11 +61,12 @@ int main()
 
          case 'D':
             printf("Please enter account number:");
-            if(scanf("%d",&account_number)!=1)
+            if(scanf("%d",&account_number)!=1)//if scanf failed to read the number
             {
                 printf("Failed to read the account number\n");
             }
-            else if(account_number>=901&&account_number<=950){
+            else if(account_number>=901&&account_number<=950)//check if the account nuber is valid
+            {
             if(status(account_number)==1){
             printf("Please enter amount for deposit:");
             if(scanf("%lf", &amount)!=1)
@@ -167,13 +168,11 @@ int main()
             end();
             boolean=0;
          break;
-         case ' ':
+         case ' '://for case that the user type ' ', than in this case we do nothing and continue to scan the next char
          break;
 
-         case '\n':
+         case '\n'://for case that the user type Enter(/n), than in this case we do nothing and continue to scan the next char
          break;
-
-        
 
          default:
              printf("Invalid transaction type\n");

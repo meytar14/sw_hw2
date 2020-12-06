@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include "myBank.h"
 
-float accounts[50][2]={{0},{0}};//{status,balance}
-int numOfAccounts=0;
+float accounts[50][2]={{0},{0}};//{status(open/close),balance}
+int numOfAccounts=0;//to count the number of accounts exists
 void openAccount(double amount)
 {
    if(numOfAccounts>=50)
@@ -23,10 +23,10 @@ void openAccount(double amount)
            accounts[i][0]=1;
            accounts[i][1]=amount;
            printf("New account number is: :%d\n",(i+901));
+            numOfAccounts++;
            return;
        }
    }
-   numOfAccounts++;
 }
 void balance(int account_number)
 {
@@ -94,11 +94,12 @@ void close(int account_number)
     {
         return;
     }
-    if(accounts[account_number-901][0]==1)
+    if(accounts[account_number-901][0]==1)//if the account is open
     {
-      accounts[account_number-901][0]=0;
-      accounts[account_number-901][1]=0;
+      accounts[account_number-901][0]=0;//close the account
+      accounts[account_number-901][1]=0;//reset the balance
       printf("close account number %d\n",account_number);
+      numOfAccounts--;
     }
 }
 void rate(double rate)
@@ -133,6 +134,7 @@ for(int i=0;i<50;i++)
    }
 }
 
-int status(int account_number){
+int status(int account_number)//return 1 if the account is open, return 0 if the account is close
+{
 return accounts[account_number-901][0];
 }
